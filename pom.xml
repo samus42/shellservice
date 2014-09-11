@@ -2,28 +2,28 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <groupId>com.monsanto.tps</groupId>
-        <artifactId>tps-pom</artifactId>
-        <version>1.8.4</version>
-    </parent>
+    <!--<parent>-->
+        <!--<groupId>com.monsanto.tps</groupId>-->
+        <!--<artifactId>tps-pom</artifactId>-->
+        <!--<version>1.8.4</version>-->
+    <!--</parent>-->
     <modelVersion>4.0.0</modelVersion>
 
     <version>1.0.0-SNAPSHOT</version>
-    <groupId>com.monsanto.tps.cloud</groupId>
-    <artifactId>test-cloud-tomcat</artifactId>
+    <groupId>net.darkthorn.cloud</groupId>
+    <artifactId>shellservice</artifactId>
     <packaging>war</packaging>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.monsanto.tps.web</groupId>
-            <artifactId>webdev-services</artifactId>
-            <version>${web.tools.version}</version>
-        </dependency>
-    </dependencies>
+    <!--<dependencies>-->
+        <!--<dependency>-->
+            <!--<groupId>com.monsanto.tps.web</groupId>-->
+            <!--<artifactId>webdev-services</artifactId>-->
+            <!--<version>${web.tools.version}</version>-->
+        <!--</dependency>-->
+    <!--</dependencies>-->
 
     <build>
-        <finalName>test-cloud-tomcat</finalName>
+        <finalName>shellservice</finalName>
 
         <plugins>
 
@@ -44,50 +44,27 @@
                 </configuration>
             </plugin>
 
-            <plugin>
-                <groupId>com.monsanto.tps</groupId>
-                <artifactId>jshint-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>**/*cleditor*.js</exclude>
-                        <exclude>**/external/**/*.js</exclude>
-                        <exclude>**/markitup/**/*.js</exclude>
-                        <exclude>**/ckeditor/**/*.js</exclude>
-                        <exclude>**/jwysiwyg/**/*.js</exclude>
-                        <exclude>**/directory.js</exclude>
-                        <exclude>**/plugins/**/*.js</exclude>
-                        <exclude>**/*blanket.js</exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <executions>
-                    <!-- copy the WAR to the Tomcat webapps folder -->
-                    <execution>
-                        <id>copy-war-to-tomcat</id>
-                        <phase>install</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <tasks>
-                                <delete dir="${default.tomcat.home}/webapps/${project.build.finalName}"/>
-                                <copy file="${project.build.directory}/${project.build.finalName}.war" tofile="${default.tomcat.home}/webapps/${project.build.finalName}.war" failonerror="false"/>
-                            </tasks>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>com.monsanto.tps.cloud</groupId>
-                <artifactId>cloud-deploy-maven-plugin</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
-                <configuration>
-                    <devScript>${project.basedir}/deployDev.sh</devScript>
-                </configuration>
-            </plugin>
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-antrun-plugin</artifactId>-->
+                <!--<executions>-->
+                    <!--&lt;!&ndash; copy the WAR to the Tomcat webapps folder &ndash;&gt;-->
+                    <!--<execution>-->
+                        <!--<id>copy-war-to-tomcat</id>-->
+                        <!--<phase>install</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>run</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<tasks>-->
+                                <!--<delete dir="${default.tomcat.home}/webapps/${project.build.finalName}"/>-->
+                                <!--<copy file="${project.build.directory}/${project.build.finalName}.war" tofile="${default.tomcat.home}/webapps/${project.build.finalName}.war" failonerror="false"/>-->
+                            <!--</tasks>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
+
         </plugins>
     </build>
     <properties>
